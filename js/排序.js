@@ -16,9 +16,9 @@ function bs1(arr) {
 
 //冒泡排序2
 function bs2(arr){
-	console.log("进来的：",arr);	
 	//利用引用类型加解构
 	for (let i = 1; i < arr.length; i++) {
+		//每比较一层后就能够得出一个最大/小的值，比较的个数会减1
 		for(let j=0;j<arr.length-i;j++){
 			console.log(arr[i]);
 			if(moreThan(arr[j],arr[j+1])){
