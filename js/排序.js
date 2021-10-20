@@ -20,7 +20,7 @@ function bs2(arr){
 	for (let i = 1; i < arr.length; i++) {
 		//每比较一层后就能够得出一个最大/小的值，比较的个数会减1
 		for(let j=0;j<arr.length-i;j++){
-			console.log(arr[i]);
+			// console.log(arr[i]);
 			if(moreThan(arr[j],arr[j+1])){
 				//解构赋值
 				[arr[j+1],arr[j]]=[arr[j],arr[j+1]];
