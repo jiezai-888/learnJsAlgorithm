@@ -77,7 +77,6 @@ function bs4(arr){
 		let littlefront=bs4(front);
 		let littlenext=bs4(next);
 		if(littlefront&&littlenext){
-			// console.log("进来的：",littlefront,littlenext)
 			let newarr=[];
 			if(littlefront.length>littlenext.length){
 				return compare(littlefront,littlenext,newarr);
@@ -115,6 +114,7 @@ function bs4(arr){
 	}
 	return arr;
 }
+
 
 //快速排序-快慢指针方法
 function bs5(arr){
@@ -164,6 +164,64 @@ function bs5(arr){
 }
 
 
-
+//快速排序-左右指针方法
+function bs6(arr){
+	if(arr.length<=2){
+		return arr;
+	}
+	if(sort(arr)){
+		return arr;
+	}
+	let middle=Math.floor(arr.length/2);
+	let middlevalue=arr.splice(middle,1)[0];
+	// console.log("最后的middle:",middlevalue);
+	let leftindex=null,rightindex=arr.length;
+	let leftarr=[],rightarr=[];
+	for(let i=0;i<arr.length;i+=1){
+		leftindex=i;
+		rightindex-=1;
+		let middleindex=Math.floor(arr.length/2);
+		if(leftindex==middleindex){
+			// console.log('索引相等',leftindex,rightindex);
+			if(arr[leftindex]&&arr[leftindex]<=middlevalue){
+				leftarr.push(arr[leftindex]);
+				leftarr.push(middlevalue);
+				
+			}else{
+				rightarr.push(arr[leftindex]);
+				leftarr.push(middlevalue);
+				
+			}
+			break;
+		}
+		// console.log("索引",leftindex,rightindex);
+		if(arr[leftindex]&&arr[leftindex]<=middlevalue){
+			leftarr.push(arr[leftindex]);
+		}else{
+			rightarr.push(arr[leftindex]);
+		}
+		if(arr[rightindex]&&arr[rightindex]>middlevalue&&rightindex>middleindex){
+			rightarr.push(arr[rightindex]);
+		}else if(rightindex>middleindex){
+			leftarr.push(arr[rightindex]);
+		}
+		
+	}
+	
+	let l=bs6(leftarr);
+	let r=bs6(rightarr);
+	
+	function sort(arr){
+		let flag=true;
+		for (let i = 0; i < arr.length; i++) {
+			while(arr[i]>arr[i+1]){
+				flag=false;
+				return flag;
+			}
+		}
+		return flag;
+	}
+	return l.concat(r);
+}
 
 
