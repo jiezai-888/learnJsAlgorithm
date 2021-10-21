@@ -116,5 +116,54 @@ function bs4(arr){
 	return arr;
 }
 
+//快速排序-快慢指针方法
+function bs5(arr){
+	if(arr.length<=2){
+		return arr;
+	}
+	if(sort(arr)){
+		return arr;
+	}
+	//以数组第一个元素为基准点
+	let datumPoint=arr.shift();
+	let leftarr=new Array();
+	let rightarr=new Array();
+	let leftindex=-1,currentindex=0;
+	let newarr=[];
+	//当前元素比基准点小，快慢指针都+1，否则只是块+1
+	for (let i = 0; i < arr.length; i++) {
+		currentindex=i;
+		if(arr[currentindex]<=datumPoint){
+			leftindex+=1;
+			if(arr[leftindex]&&arr[currentindex]<arr[leftindex]){
+				[arr[currentindex],arr[leftindex]]
+				=
+				[arr[leftindex],arr[currentindex]];
+			}
+		}
+	}
+	arr.splice(leftindex+1,0,datumPoint);
+	// console.log("遍历后：",arr);
+	leftarr=arr.splice(0,leftindex+2)
+	rightarr=arr;
+	let newleftarr=bs5(leftarr);
+	let newrightarr=bs5(rightarr);
+	
+	function sort(arr){
+		let flag=true;
+		for (let i = 0; i < arr.length; i++) {
+			while(arr[i]>arr[i+1]){
+				flag=false;
+				console.log(flag)
+				return flag;
+			}
+		}
+		return flag;
+	}
+	return newleftarr.concat(newrightarr);
+}
+
+
+
 
 
