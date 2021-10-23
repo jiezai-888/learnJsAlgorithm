@@ -9,6 +9,7 @@ function linkedLink(){
 	linkedLink.prototype.prepareNode=function (value){
 		const newNode=new createLinkNode(value,this.head);
 		this.head=newNode;
+		//如果多次调用初始化节点函数，只能替换头节点
 		if(!this.tail){
 			this.tail=newNode;
 		}
