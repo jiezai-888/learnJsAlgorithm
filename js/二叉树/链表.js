@@ -1,4 +1,4 @@
-
+//该链表还没有find，需要的时候可以定制
 function linkedLink(){
 	//链表头节点(指针)，尾节点(指针).
 	//!null=true;
@@ -6,7 +6,7 @@ function linkedLink(){
 	this.tail=null;
     
 	//初始化节点
-	linkedLink.prototype.prepareNode=function (value,this.head){
+	linkedLink.prototype.prepareNode=function (value){
 		const newNode=new createLinkNode(value,this.head);
 		this.head=newNode;
 		//如果多次调用初始化节点函数，只能替换头节点
