@@ -1,5 +1,5 @@
 //该hashtable具有无序唯一性:解决冲突的方法就是更新相同key的value
-//可以说本质上还是没有解决hash冲突问题:冲突解决看下一个版本
+//可以说本质上还是没有解决hash冲突问题,也不具备扩容功能:冲突、扩容解决看下一个版本
 const defaultHashTableSize=32;
 
 function HashTable(defaultHashTableSize){
@@ -25,7 +25,7 @@ function HashTable(defaultHashTableSize){
 		this.keys[key]=hashKey;
 		//这里的slotlink是一个链表，不是链表中的节点
 		const slotlink=this.slot[hashKey];
-		//获取与之对应的节点
+		//获取与之对应的节点,看看该节点是否存在
 		const node=slotlink.find(slotlink.head);
 		//不存在就添加,存在就更新
 		if(!node){
