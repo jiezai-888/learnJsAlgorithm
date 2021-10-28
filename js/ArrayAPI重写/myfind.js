@@ -10,10 +10,12 @@ let find=function(value){
 	if(typeof value !=='function'){
 		throw new TypeError("参数必须是一个回调函数");
 	}
-	//把this强制转换成为对象,数组转换成为的对象有length属性
+	//Object()进行转换，不会改变原来的类型.
+	//拷贝了一份，不过是浅拷贝
 	let obj=Object(this);
 	let lg=obj.length>>>0;
 	let currentindex=0;
+	// let num=0;
 	let thisarg=arguments[1];
 	while(currentindex<lg){
 		let currentItem=obj[currentindex];
